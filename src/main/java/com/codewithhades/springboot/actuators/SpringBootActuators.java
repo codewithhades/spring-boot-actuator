@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootActuatorsApp {
+public class SpringBootActuators {
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootActuatorsApp.class, args);
+        SpringApplication.run(SpringBootActuators.class, args);
     }
 }
