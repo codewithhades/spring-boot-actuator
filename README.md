@@ -12,7 +12,7 @@ In this example you can check how to configure the Spring Boot actuator which wi
 
 The only requirement is that you have a running Spring Boot application. If you need some help at setting it up you can check how  [in this example](https://github.com/codewithhades/spring-boot-basic-setup).
 
-## How to configure the actuator
+## How to deploy the actuator
 
 To deploy the Spring Boot actuator we just need to import the dependency
 
@@ -25,32 +25,41 @@ To deploy the Spring Boot actuator we just need to import the dependency
 
 This will automatically deploy a REST API when you start your application under
 
-- [localhost:8080/app/actuator](http://localhost:8080/app/actuator) - _The actuator base API with a list of exposed metrics_
-- [localhost:8080/app/actuator/health](http://localhost:8080/app/actuator/health) - _The specific health metric API_
+- [localhost:8080/app/actuator](http://localhost:8080/app/actuator) - _The actuator base API with a list of exposed endpoints_
+- [localhost:8080/app/actuator/health](http://localhost:8080/app/actuator/health) - _The health check endpoint_
 
-You can change the actuator base path by updating your [application.properties](src/main/resources/application.properties)
+## How to configure the actuator
 
-````properties
-management.endpoints.web.base-path=/another-actuator-base-path
-````
+We can adapt our actuator by updating our [application.properties](src/main/resources/application.properties) and override the properties in order to
 
-By default, all the actuator endpoints are included (except shutdown) but not exposed. You can expose specific endpoints by updating your [application.properties](src/main/resources/application.properties)
+- Change the actuator base path
+    ````properties
+    management.endpoints.web.base-path=/another-actuator-base-path
+    ````
+- By default, all the actuator endpoints are included (except shutdown) but not exposed. You can expose specific endpoint with
+    ````properties
+    management.endpoints.web.exposure.include=health,beans
+    ````
+  or expose them all with
+    ````properties
+    management.endpoints.web.exposure.include=*
+    ````
 
-````properties
-management.endpoints.web.exposure.include=health,beans
-````
-or expose them all
-````properties
-management.endpoints.web.exposure.include=*
-````
-And if you  need to include the shutdown endpoint you can do so by adding
-````properties
-management.endpoint.shutdown.enabled=true
-````
-which will allow you to shut down the application by calling
-````bash
-curl -X POST http://localhost:8080/app/actuator/shutdown
-````
+- If you need to include the shutdown endpoint you can do so by overriding
+    ````properties
+    management.endpoint.shutdown.enabled=true
+    ````
+  which will allow you to shut down the application by calling
+    ````bash
+    curl -X POST http://localhost:8080/app/actuator/shutdown
+    ````
+
+- Extend the health check endpoint by logging more details or adding more components into it such as the [DummyHealthCheck.java](src/main/java/com/codewithhades/springboot/actuator/healthcheck/DummyHealthCheck.java). These will be exposed under [localhost:8080/app/actuator/health/custom](http://localhost:8080/app/actuator/health/custom) if we also override
+    ````properties
+    management.endpoint.health.group.custom.show-components=always
+    management.endpoint.health.group.custom.show-details=always
+    ````
+
 I hope you found this example useful!
 
 :coffee: May Java be with you!
