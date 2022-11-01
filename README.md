@@ -6,7 +6,7 @@
 
 It provides production-ready features like metrics or health-checks and simplifies the build configuration overall.
 
-In this example you can check how to configure Spring Boot actuators that will provide us out of the box metrics and health-checks.
+In this example you can check how to configure Spring Boot actuators which will provide us out of the box metrics and health-checks.
 
 ## Technical requirements
 
@@ -25,9 +25,32 @@ To deploy the Spring Boot actuators we just need to import the dependency
 
 This will automatically deploy a REST API when you start your application under
 
-- [localhost:8080/app/actuator](http://localhost:8080/app/actuator/health) - _The actuator base API_
+- [localhost:8080/app/actuator](http://localhost:8080/app/actuator) - _The actuators base API_
 - [localhost:8080/app/actuator/health](http://localhost:8080/app/actuator/health) - _The health API_
 
+You can change the actuator base path by updating your [application.properties](src/main/resources/application.properties)
+
+````properties
+management.endpoints.web.base-path=/another-actuator-base-path
+````
+
+By default all actuator endpoints are included (except shutdown) but not exposed. You can expose specific endpoints by updating your [application.properties](src/main/resources/application.properties)
+
+````properties
+management.endpoints.web.exposure.include=health,beans
+````
+or expose them all
+````properties
+management.endpoints.web.exposure.include=*
+````
+And if you  need to include the shutdown endpoint you can do so by adding
+````properties
+management.endpoint.shutdown.enabled=true
+````
+which will allow you to shutdown the application by calling
+````bash
+curl -X POST http://localhost:8080/app/actuator/shutdown
+````
 I hope you found this example useful!
 
 :coffee: May Java be with you!
