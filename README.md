@@ -1,4 +1,4 @@
-# Spring Boot :mag_right: Actuators
+# Spring Boot :mag_right: Actuator
 
 ## About Spring Boot and this example
 
@@ -6,15 +6,15 @@
 
 It provides production-ready features like metrics or health-checks and simplifies the build configuration overall.
 
-In this example you can check how to configure Spring Boot actuators which will provide us out of the box metrics and health-checks.
+In this example you can check how to configure the Spring Boot actuator which will provide us out of the box metrics and health-checks.
 
 ## Technical requirements
 
 The only requirement is that you have a running Spring Boot application. If you need some help at setting it up you can check how  [in this example](https://github.com/codewithhades/spring-boot-basic-setup).
 
-## How to configure actuators
+## How to configure the actuator
 
-To deploy the Spring Boot actuators we just need to import the dependency
+To deploy the Spring Boot actuator we just need to import the dependency
 
 ````xml
 <dependency>
@@ -25,8 +25,8 @@ To deploy the Spring Boot actuators we just need to import the dependency
 
 This will automatically deploy a REST API when you start your application under
 
-- [localhost:8080/app/actuator](http://localhost:8080/app/actuator) - _The actuators base API_
-- [localhost:8080/app/actuator/health](http://localhost:8080/app/actuator/health) - _The health API_
+- [localhost:8080/app/actuator](http://localhost:8080/app/actuator) - _The actuator base API with a list of exposed metrics_
+- [localhost:8080/app/actuator/health](http://localhost:8080/app/actuator/health) - _The specific health metric API_
 
 You can change the actuator base path by updating your [application.properties](src/main/resources/application.properties)
 
@@ -34,7 +34,7 @@ You can change the actuator base path by updating your [application.properties](
 management.endpoints.web.base-path=/another-actuator-base-path
 ````
 
-By default all actuator endpoints are included (except shutdown) but not exposed. You can expose specific endpoints by updating your [application.properties](src/main/resources/application.properties)
+By default, all the actuator endpoints are included (except shutdown) but not exposed. You can expose specific endpoints by updating your [application.properties](src/main/resources/application.properties)
 
 ````properties
 management.endpoints.web.exposure.include=health,beans
@@ -47,7 +47,7 @@ And if you  need to include the shutdown endpoint you can do so by adding
 ````properties
 management.endpoint.shutdown.enabled=true
 ````
-which will allow you to shutdown the application by calling
+which will allow you to shut down the application by calling
 ````bash
 curl -X POST http://localhost:8080/app/actuator/shutdown
 ````

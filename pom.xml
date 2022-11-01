@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.codewithhades</groupId>
-    <artifactId>spring-boot-actuators</artifactId>
+    <artifactId>spring-boot-actuator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>

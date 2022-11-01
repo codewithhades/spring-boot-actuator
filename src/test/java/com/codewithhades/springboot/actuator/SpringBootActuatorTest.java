@@ -1,10 +1,10 @@
-package com.codewithhades.springboot.actuators;
+package com.codewithhades.springboot.actuator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootActuatorsTest {
+class SpringBootActuatorTest {
 
     @Test
     void appContextShouldStart() {
