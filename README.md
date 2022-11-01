@@ -8,9 +8,9 @@ It provides production-ready features like metrics or health-checks and simplifi
 
 ## About this example
 
-In this example you can check how to configure Spring Boot actuators.
+In this example you can check how to configure Spring Boot actuators that will provide us out of the box metrics and health-checks.
 
-If you need some help at setting a Spring Boot application up you can check how  [in this example](https://github.com/codewithhades/spring-boot-basic-setup).
+But before we continue you need to set a Spring Boot application up. If you need some help you can check how  [in this example](https://github.com/codewithhades/spring-boot-basic-setup).
 
 ## How to configure actuators
 
@@ -32,7 +32,7 @@ Proporciona herramientas listas para producción como métricas o health-checks,
 
 ## Acerca de este proyecto
 
-En este ejemplo podrás ver cómo configurar actuadores en Spring Boot.
+En este ejemplo podrás ver cómo configurar actuadores en Spring Boot que nos proporcionará métricas y health-checks listos para usar.
 
 Si necesitas ayuda para configurar una aplicación Spring Boot puedes ver cómo [en este ejemplo](https://github.com/codewithhades/spring-boot-basic-setup).
 
