@@ -36,16 +36,16 @@ We can adapt our actuator by updating our [application.properties](src/main/reso
     ````properties
     management.endpoints.web.base-path=/another-actuator-base-path
     ````
-- By default, all the actuator endpoints are included (except shutdown) but not exposed. You can expose specific endpoint with
+- Expose specific endpoint. By default, all the actuator endpoints are included (except shutdown) but not exposed
     ````properties
     management.endpoints.web.exposure.include=health,beans
     ````
-  or expose them all with
+- Expose all endpoints
     ````properties
     management.endpoints.web.exposure.include=*
     ````
 
-- If you need to include the shutdown endpoint you can do so by overriding
+- Include the shutdown endpoint by overriding
     ````properties
     management.endpoint.shutdown.enabled=true
     ````
