@@ -25,7 +25,7 @@ To deploy the Spring Boot actuator we just need to import the dependency
 
 This will automatically deploy a REST API when you start your application under
 
-- [localhost:8080/app/actuator](http://localhost:8080/app/actuator) - _The actuator base API with a list of exposed endpoints_
+- [localhost:8080/app/actuator](http://localhost:8080/app/actuator) - _The actuator base path API with a list of exposed endpoints_
 - [localhost:8080/app/actuator/health](http://localhost:8080/app/actuator/health) - _The health check endpoint_
 
 ## How to configure the actuator
@@ -38,8 +38,12 @@ We can adapt our actuator by updating our [application.properties](src/main/reso
     ````
 - Expose specific endpoint. By default, all the actuator endpoints are included (except shutdown) but not exposed
     ````properties
-    management.endpoints.web.exposure.include=health,beans
+    management.endpoints.web.exposure.include=beans,metrics
     ````
+  which you can check by browsing
+  - [localhost:8080/app/actuator/beans](http://localhost:8080/app/actuator/beans)
+  - [localhost:8080/app/actuator/metrics](http://localhost:8080/app/actuator/metrics)
+
 - Expose all endpoints
     ````properties
     management.endpoints.web.exposure.include=*

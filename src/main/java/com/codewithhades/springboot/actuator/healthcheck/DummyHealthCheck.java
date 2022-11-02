@@ -6,7 +6,7 @@ import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 @Component
-@Endpoint(id="codewithhades")
+@Endpoint(id="dummyHealthCheck")
 public class DummyHealthCheck implements HealthIndicator {
 
     @Override
